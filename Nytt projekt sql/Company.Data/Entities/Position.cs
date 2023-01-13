@@ -13,6 +13,6 @@ namespace Company.Data.Entities
         public int Id { get; set; }
         [MaxLength(80), Required]
         public string? PositionName { get; set; }
-        public virtual ICollection<Employee_Position>? Employee_Positions  { get; set; }
+        public virtual ICollection<EmployeePosition>? Employee_Positions  { get; set; }
     }
 }

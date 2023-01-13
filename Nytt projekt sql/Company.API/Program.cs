@@ -20,7 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CompanyContext>(
     options =>
     options.UseSqlServer(
-    builder.Configuration.GetConnectionString("CompanyAPIContext")));
+    builder.Configuration.GetConnectionString("CompanyConnection")));
 
 ConfigureAutomapper(builder.Services);
 RegisterServices(builder.Services);
@@ -49,7 +49,7 @@ void ConfigureAutomapper(IServiceCollection services)
     {
         cfg.CreateMap<Organization, CompanyDTO>().ReverseMap();
         cfg.CreateMap<Department, DepartmentDTO>().ReverseMap();
-        cfg.CreateMap<Employee_Position, Employee_PositionDTO>().ReverseMap();
+        cfg.CreateMap<EmployeePosition, EmployeePositionDTO>().ReverseMap();
         cfg.CreateMap<Employee, EmployeeDTO>().ReverseMap();
         cfg.CreateMap<Position, PositionDTO>().ReverseMap();
     });

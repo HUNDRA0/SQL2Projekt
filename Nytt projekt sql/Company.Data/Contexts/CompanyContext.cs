@@ -15,8 +15,8 @@ namespace Company.Data.Contexts
         public DbSet<Organization> Companys => Set<Organization>();
         public DbSet<Employee> Employees => Set<Employee>();
         public DbSet<Department> Departments => Set<Department>();
-        public DbSet<Employee_Position> EmployeePositions => Set<Employee_Position>();
         public DbSet<Position> Positions => Set<Position>();
+        public DbSet<EmployeePosition> EmployeePositions => Set<EmployeePosition>();
 
 
         public CompanyContext(DbContextOptions<CompanyContext> options) : base(options)
@@ -24,8 +24,8 @@ namespace Company.Data.Contexts
        
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Employee_Position>().HasKey(ab => new { ab.EmployeeId, ab.PositionId });
-            base.OnModelCreating(builder);   
+            base.OnModelCreating(builder);
+            builder.Entity<EmployeePosition>().HasKey(ep => new { ep.EmployeeId, ep.PositionId });   
             SeedData(builder);
         }
         private void SeedData(ModelBuilder builder)
@@ -88,7 +88,7 @@ namespace Company.Data.Contexts
         };
             builder.Entity<Employee>().HasData(Employees);
 
-            var avdelnings = new List<Department>
+            var departments = new List<Department>
             {
                 new Department
                 {
@@ -147,34 +147,34 @@ namespace Company.Data.Contexts
             };
             builder.Entity<Position>().HasData(Positions);
 
-            var employee_Positions = new List<Employee_Position>
+            var employee_positions = new List<EmployeePosition>
             {
-                new Employee_Position
+                new EmployeePosition
                 {
                     
                     EmployeeId=1,
                     PositionId=1,
                 },
-                new Employee_Position
+                new EmployeePosition
                 {
                     
                     EmployeeId=1,
                     PositionId=2,
                 },
-                new Employee_Position
+                new EmployeePosition
                 {
                     
                     EmployeeId=2,
                     PositionId=2,
                 },
-                new Employee_Position
+                new EmployeePosition
                 {
                     
                     EmployeeId=3,
                     PositionId=4,
                 },
             };
-            builder.Entity<Employee_Position>().HasData(EmployeePositions);
+            builder.Entity<EmployeePosition>().HasData(EmployeePositions);
 
 
 

@@ -22,7 +22,6 @@ namespace Company.Data.Entities
         public decimal? Salary { get; set; }
 
         public bool? Union { get; set; }
-        public virtual ICollection<Department>? Departments { get; set; }
-        public virtual ICollection<Employee_Position>? Employee_Positions { get; set; }
+        public virtual ICollection<EmployeePosition>? Employee_Positions { get; set; }
     }
 }
